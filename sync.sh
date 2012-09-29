@@ -14,7 +14,7 @@
 # make sure you have a passwordless connection to the remote server othervise
 # it will constantly pop-up passwords and will not work.
 # ----
-# cat .ssh/id_rsa.pub | ssh serkan@108.166.109.17 'cat >> .ssh/authorized_keys'
+# cat .ssh/id_rsa.pub | ssh serkan@***.***.***.*** 'cat >> .ssh/authorized_keys'
 # above code will let you connect without password
 # ----
 # make sure you give executable permissions to this script
@@ -23,14 +23,13 @@
 # Later you can use this script as a build script on your favorite editor for example on Sublime Text 2
 #################
 
-echo 'Deprecated.'
-exit 0
-
 LOCK_FILE="/tmp/rsync_backup.lock"
 LOG_FILE="/tmp/rsync_backup.log"
 RSYNC="/usr/bin/rsync"
-LOCAL="/www/beautifulmind"
-$USER="serkan"
+LOCAL="~/example"
+USER="serkan"
+HOST="example.com"
+REMOTE="~/"
 
 # Prevent multiple syncs to run
 if [ -e $LOCK_FILE ]; then
@@ -42,6 +41,6 @@ cat /dev/null > $LOG_FILE
 touch $LOCK_FILE
 
 echo "Syncing Files. Please wait.";
-$RSYNC -avzC --include='core' --exclude='.git' $LOCAL $USER@108.166.109.17:src/beautifulmind/ | grep -v \/$
+$RSYNC -avzC --include='core' --exclude='.git' $LOCAL $USER@$HOST:$REMOTE | grep -v \/$
 
 rm $LOCK_FILE
