@@ -1,0 +1,42 @@
+syntax on
+set backspace=indent,eol,start
+filetype on
+filetype plugin on
+filetype indent on
+set hlsearch
+set nowrap
+" set number
+set incsearch
+set ts=4
+set sts=4
+set sw=4
+set expandtab
+set ai
+set hidden
+set wildmode=list:longest
+set ignorecase
+set smartcase
+set title
+set guioptions+=b
+set scrolloff=3
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set background=dark
+" colorscheme solarized
+" let g:solarized_termcolors=16
+" colorscheme solarized
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+set ruler
+" When editing a file, always jump to the last cursor position
+autocmd BufReadPost *
+\ if ! exists("g:leave_my_cursor_position_alone") |
+\     if line("'\"") > 0 && line ("'\"") <= line("$") |
+\         exe "normal g'\"" |
+\     endif |
+\ endif
+" autocmd Vimenter * NERDTree /www/
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
