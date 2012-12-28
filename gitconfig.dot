@@ -39,9 +39,6 @@
 [rerere]
     enabled = true
 
-[merge]
-    tool = emerge
-
 [alias]
     st = status
     ci = commit
@@ -66,8 +63,5 @@
 [core]
   editor = subl
 
-[branch "master"]
-    remote = origin
-    merge = refs/heads/master
 [merge]
     tool = opendiff
