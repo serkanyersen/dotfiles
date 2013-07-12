@@ -1,0 +1,28 @@
+#!/bin/bash
+# Pre-commit Git hook to run JSHint on JavaScript files.
+#
+# If you absolutely must commit without testing,
+# use: git commit --no-verify
+
+filenames=($(git diff --cached --name-only HEAD))
+
+which jshint &> /dev/null
+if [ $? -ne 0 ];
+then
+  echo "error: jshint not found"
+  echo "install with: sudo npm install -g jshint"
+  exit 1
+fi
+
+for i in "${filenames[@]}"
+do
+    if [[ $i =~ \.js$ ]];
+    then
+        echo jshint $i
+        jshint $i
+        if [ $? -ne 0 ];
+        then
+            exit 1
+        fi
+    fi
+done
