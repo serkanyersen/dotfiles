@@ -1,25 +1,29 @@
 [user]
-	name = Serkan Yersen
-	email = serkanyersen@gmail.com
+    name = Serkan Yersen
+    email = serkanyersen@gmail.com
 
 [github]
     user = serkanyersen
 
 [color]
     ui = auto
+
 [color "branch"]
     current = yellow reverse
     local = yellow
     remote = green
+
 [color "diff"]
     meta = yellow bold
     frag = magenta bold
     old = red bold
     new = green bold
+
 [color "status"]
     added = yellow
     changed = green
     untracked = cyan
+
 [diff]
     renames = true
     mnemonicprefix = true
@@ -50,7 +54,7 @@
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     unstage = reset --hard HEAD
-    branches = !git-branches
+    branches = !legit branches
     put = push origin HEAD
     rpo = remote prune origin
     cob = !sh -c 'git co -b "$0"'
@@ -60,8 +64,24 @@
     dt = !sh -c 'git tag -d "$0" && git push origin :refs/tags/$0'
     release-tag = !sh -c 'TAG=$0-`date +"%Y%m%d%H%M%S"` && echo "Creating Tag: $TAG" && git tag $TAG -am \"$1\" && git push --tags origin master'
     update = !sh -c 'git stash && git pull && git stash pop'
+    switch = !legit switch \"$@\"
+    sprout = !legit sprout \"$@\"
+    unpublish = !legit unpublish \"$@\"
+    harvest = !legit harvest \"$@\"
+    sync = !legit sync \"$@\"
+    publish = !legit publish \"$@\"
+    graft = !legit graft \"$@\"
+
 [core]
-  editor = subl
+    editor = /usr/bin/vim
+    excludesfile = /Users/serkanyersen/.gitignore_global
 
 [merge]
     tool = opendiff
+
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "sourcetree"]
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
