@@ -50,7 +50,7 @@ autocmd BufReadPost *
 nnoremap <F2> :set invpaste paste?<CR>
 
 set pastetoggle=<F2>
-set showmode
+set noshowmode
 
 set visualbell t_vb=
 set mouse=
