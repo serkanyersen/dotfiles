@@ -5,13 +5,13 @@ filetype plugin on
 filetype indent on
 set hlsearch
 set nowrap
-" set number
+
+set relativenumber
 set incsearch
-set ts=4
-set sts=4
-set sw=4
+set ts=2
+set sts=2
+set sw=2
 set expandtab
-set ai
 set hidden
 set wildmode=list:longest
 set ignorecase
@@ -21,13 +21,18 @@ set guioptions+=b
 set scrolloff=3
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set background=dark
+
+set background=light " "dark" or "light", used for highlight colors
+
 " colorscheme solarized
 " let g:solarized_termcolors=16
 " colorscheme solarized
+
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
+
 set ruler
+
 " When editing a file, always jump to the last cursor position
 autocmd BufReadPost *
 \ if ! exists("g:leave_my_cursor_position_alone") |
@@ -37,6 +42,30 @@ autocmd BufReadPost *
 \ endif
 " autocmd Vimenter * NERDTree /www/
 nnoremap <F2> :set invpaste paste?<CR>
+
 set pastetoggle=<F2>
 set showmode
 
+set visualbell t_vb=
+set mouse=
+set colorcolumn=90
+set autoread " autom. read file when changed outside of Vim
+
+set encoding=utf-8
+set modeline
+set modelines=5
+set wildmenu " Show possible completions on command line
+set wildmode=list:longest,full " List all options and complete
+" Ignore certain files in tab-completion
+set wildignore=*.class,*.o,*~,*.pyc,.git,third_party,node_modules
+
+set smartcase
+set smartindent
+set cinkeys-=0#
+
+let g:syntastic_javascript_checkers=['jshint']
+let g:syntastic_python_checkers=['flake8', 'pyflakes']
+let g:syntastic_python_flake8_args="--select=W402,W403,W404,W405,W801,W802,W803,W804,W805,W806"
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['python', 'javascript'],
+                           \ 'passive_filetypes': ['html'] }
