@@ -7,6 +7,12 @@ set hlsearch
 set nowrap
 
 set relativenumber
+" Enable relative numbers only when needed
+autocmd FocusLost * :set number
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+autocmd CursorMoved * :set relativenumber
+
 set incsearch
 set ts=2
 set sts=2
