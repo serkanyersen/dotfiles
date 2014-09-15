@@ -4,19 +4,20 @@
 # ------------
 #
 # 1) Copy script to your home folder
-# -$ cd ~
-# -$ wget https://raw.githubusercontent.com/serkanyersen/dotfiles/master/to.sh
+#  cd ~
+#  wget https://raw.githubusercontent.com/serkanyersen/dotfiles/master/to.sh
 #
 # 2) Open file and change defaults for your needs
 #
 # 3) Give executable permissions
-# -$ chmod +x to.sh
+#  chmod +x to.sh
 #
 # 4) Link it to your bin folder (as `to` not `to.sh`)
 #  -) For mac os x
-#     -$ ln -s ~/to.sh /usr/local/bin/to
+#    ln -s ~/to.sh /usr/local/bin/to
+#
 #  -) For linux
-#     -$ ln -s ~/to.sh /usr/bin/to
+#    ln -s ~/to.sh /usr/bin/to
 #
 # That's it, Enjoy :)
 #####################################################################################
