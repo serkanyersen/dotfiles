@@ -36,6 +36,7 @@ USER='serkan'
 # Configs
 TMUX='-- tmux attach -d'
 CMD='mosh'
+DEBUG=0
 
 # Display usage
 usage() {
@@ -46,11 +47,13 @@ $GREEN Parameters$NO_COLOR:
     [-u <user>]$GRAY Change username$NO_COLOR
     [-n]$GRAY Don't attach tmux$NO_COLOR
     [-s]$GRAY Use SSH instead of MOSH$NO_COLOR
+    [-d]$GRAY Debug the output$NO_COLOR
     [--h]$GRAY Display this message$NO_COLOR" 1>&2;
-    exit 0;
+    exit 1;
 }
 
-while getopts ":h:u:ns" o; do
+# Get the passed options for this command
+while getopts ":h:u:nsd" o; do
     case "${o}" in
         h)
             HOST=${OPTARG}
@@ -68,13 +71,27 @@ while getopts ":h:u:ns" o; do
                 TMUX="-t tmux attach -d"
             fi
             ;;
+        d)
+            DEBUG=1
+            ;;
         *)
             usage
             ;;
     esac
 done
 
-echo Connecting to $HOST
-$CMD $USER@$HOST $TMUX
+# Change the title of the window
+echo -e '\033k'$USER@$HOST'\033\\'
 
-exit 1
+# Execute the command
+if [ $DEBUG = 1 ]; then
+    echo 'Command to execute:'
+    echo -e $GREEN$CMD $USER@$HOST $TMUX $NO_COLOR
+else
+    # Print progress
+    echo -e $GREEN'Connecting to' $HOST$NO_COLOR
+    $CMD $USER@$HOST $TMUX
+fi
+
+# Exit with success
+exit 0
