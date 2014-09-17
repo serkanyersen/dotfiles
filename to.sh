@@ -56,6 +56,7 @@ HOST='addv4'
 USER='serkan'
 
 # Configs
+VERSION=1.0.0
 TMUX='-- tmux attach -d'
 CMD='mosh'
 DEBUG=0
@@ -63,6 +64,7 @@ DEBUG=0
 # Display usage
 usage() {
     echo -e "$GREEN Usage$NO_COLOR: Calling without arguments will connect using defaults
+$GREEN Version:$NO_COLOR: $VERSION
 $GREEN Defaults$NO_COLOR: $CMD $USER@$HOST $TMUX
 $GREEN Parameters$NO_COLOR:
     [-h <hostname>]$GRAY Change host name$NO_COLOR
@@ -70,12 +72,13 @@ $GREEN Parameters$NO_COLOR:
     [-n]$GRAY Don't attach tmux$NO_COLOR
     [-s]$GRAY Use SSH instead of MOSH$NO_COLOR
     [-d]$GRAY Debug the output$NO_COLOR
+    [-v]$GRAY Print version$NO_COLOR
     [--h]$GRAY Display this message$NO_COLOR" 1>&2;
     exit 1;
 }
 
 # Get the passed options for this command
-while getopts ":h:u:nsd" o; do
+while getopts ":h:u:nsdv" o; do
     case "${o}" in
         h)
             HOST=${OPTARG}
@@ -95,6 +98,10 @@ while getopts ":h:u:nsd" o; do
             ;;
         d)
             DEBUG=1
+            ;;
+        v)
+            echo $VERSION
+            exit 0
             ;;
         *)
             usage
