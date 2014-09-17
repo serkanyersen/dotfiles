@@ -72,14 +72,32 @@ $GREEN Parameters$NO_COLOR:
     [-n]$GRAY Don't attach tmux$NO_COLOR
     [-s]$GRAY Use SSH instead of MOSH$NO_COLOR
     [-d]$GRAY Debug the output$NO_COLOR
-    [-v]$GRAY Print version$NO_COLOR
-    [--h]$GRAY Display this message$NO_COLOR" 1>&2;
-    exit 1;
+    [--v | --version]$GRAY Print version$NO_COLOR
+    [--h | --help]$GRAY Display this message$NO_COLOR" 1>&2;
 }
 
 # Get the passed options for this command
-while getopts ":h:u:nsdv" o; do
+while getopts ":h:u:-:nsd" o; do
     case "${o}" in
+        # to support double dash options --help
+        -)
+            case "${OPTARG}" in
+                h | help)
+                    usage
+                    exit 0
+                    ;;
+                v | version)
+                    echo $VERSION
+                    exit 0
+                    ;;
+                *)
+                    if [ "$OPTERR" = 1 ] && [ "${optspec:0:1}" != ":" ]; then
+                        echo -e "$CYAN --$OPTARG is an unknown option$NO_COLOR" >&2
+                    fi
+                    usage
+                    exit 1
+                    ;;
+            esac;;
         h)
             HOST=${OPTARG}
             ;;
@@ -99,12 +117,15 @@ while getopts ":h:u:nsdv" o; do
         d)
             DEBUG=1
             ;;
-        v)
-            echo $VERSION
-            exit 0
-            ;;
-        *)
+        \?)
+            echo -e "$CYAN -$OPTARG is an unknown option$NO_COLOR" >&2
             usage
+            exit 1
+            ;;
+        :)
+            echo  -e "$CYAN Option -$OPTARG requires an argument.$NO_COLOR" >&2
+            usage
+            exit 1
             ;;
     esac
 done
