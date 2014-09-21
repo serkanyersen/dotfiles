@@ -46,9 +46,15 @@ plugins=(git osx python github brew node npm sublime terminalapp)
 source $ZSH/oh-my-zsh.sh
 
 ulimit -n 8000
-alias to="mosh serkan@10.183.75.171 -- tmux attach -d"
+
+# alias to="mosh addv0 -- tmux attach -d"
+# alias to-bare="mosh addv0"
+
+# alias tohd="mosh addv4 -- tmux attach -d"
+# alias tohd-bare="mosh addv4"
+
 alias serkan.io="ssh -i ~/serkan.io.pem ubuntu@54.214.239.76 -t 'tmux attach'"
-alias to-bare="mosh serkan@10.183.75.171"
+
 alias c="clear"
 alias vi="vim"
 alias mount-dev="sshfs -p 22 dev:/home/serkan/src/ ~/addv0 -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=addv0"
@@ -71,4 +77,3 @@ export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/lo
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 export PYTHONPATH=/Users/serkanyersen/src/
-
