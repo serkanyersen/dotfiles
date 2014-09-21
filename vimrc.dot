@@ -1,42 +1,73 @@
+" Enable syntax highlighting
 syntax on
+
+" Intuitive backspacing in insert mode
 set backspace=indent,eol,start
+
+" Recognize filetypes
 filetype on
 filetype plugin on
 filetype indent on
+
+" Highlight search terms
 set hlsearch
+
+" Don't wrap text
 set nowrap
 
-set relativenumber
 " Enable relative numbers only when needed
-autocmd FocusLost * :set number
-autocmd InsertEnter * :set number
+set number
+autocmd FocusLost * :set norelativenumber
+autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 autocmd CursorMoved * :set relativenumber
 
+" Incremental search
 set incsearch
+
+" White space settings
 set ts=2
 set sts=2
 set sw=2
 set expandtab
+
+" Better buffer management
 set hidden
+
+" Display extended tab completions on cmd menu
 set wildmode=list:longest
+
+" Set case insensivity and smart replace
 set ignorecase
 set smartcase
+
+" Indent to correct spot after return
+set smartindent
+
+" Specifies which keys trigger reindenting in insert mode.
+set cinkeys-=0#
+
+" Set terminal title to vim title
 set title
+
+" Display bottom horizontal scrollbar on GUI
 set guioptions+=b
+
+" scroll offset in lines when cursor is around the edge of viewport
 set scrolloff=3
+
+" Gather all swap files in a single location
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-set background=light " "dark" or "light", used for highlight colors
+" "dark" or "light", used for highlight colors
+set background=light
 
-" colorscheme solarized
-" let g:solarized_termcolors=16
-" colorscheme solarized
-
+" Scroll viewport using CTRL-c and CTRL-y
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
+" Display cursor position
 set ruler
 
 " When editing a file, always jump to the last cursor position
@@ -46,29 +77,51 @@ autocmd BufReadPost *
 \         exe "normal g'\"" |
 \     endif |
 \ endif
-" autocmd Vimenter * NERDTree /www/
-nnoremap <F2> :set invpaste paste?<CR>
 
+" Enable paste mode on F2
+nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
+
+" Don't show when you are in insert mode
 set noshowmode
 
+" Disable bell and visalbell
 set visualbell t_vb=
-set mouse=
-set colorcolumn=90
-set autoread " autom. read file when changed outside of Vim
 
+" Enable mouse in insert mode
+set mouse=i
+
+" Display a column on 80th char
+set colorcolumn=80
+
+" automatically read file when changed outside of Vim
+set autoread
+
+" Default encoding
 set encoding=utf-8
+
+" Allow first line comment configurations for each file
 set modeline
 set modelines=5
-set wildmenu " Show possible completions on command line
-set wildmode=list:longest,full " List all options and complete
+
+" Show possible completions on command line
+set wildmenu
+
+" List all options and complete
+set wildmode=list:longest,full
+
 " Ignore certain files in tab-completion
 set wildignore=*.class,*.o,*~,*.pyc,.git,third_party,node_modules
 
-set smartcase
-set smartindent
-set cinkeys-=0#
+" Automatically reload vimrc after it's changed
+autocmd! bufwritepost .vimrc source %
 
+" Catch trailing whitespace, set to always on
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
+
+" Mode Setting
 let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_python_checkers=['flake8', 'pyflakes']
 let g:syntastic_python_flake8_args="--select=W402,W403,W404,W405,W801,W802,W803,W804,W805,W806"
