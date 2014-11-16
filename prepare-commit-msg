@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# Adds current diff to the git commit message
+# Author: Serkan Yersen
+
+COMMIT_EDITMSG=$1
+
+DIFF=`git diff HEAD`
+DIFF=$(sed 's/^/# /g' <<< "$DIFF")
+
+echo "$DIFF" >> $COMMIT_EDITMSG
