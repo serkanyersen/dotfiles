@@ -40,6 +40,9 @@
 [push]
     default = tracking
 
+[fetch]
+    prune = true
+
 [rerere]
     enabled = true
 
@@ -48,21 +51,15 @@
     ci = commit
     br = branch
     co = checkout
-    unfuck = checkout
     df = diff HEAD
     lg = log -p
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    unstage = reset --hard HEAD
-    branches = !git-branches
+    # unstage = reset --hard HEAD
+    unstage = !sh -c 'git reset --hard HEAD && git clean -fd'
     put = push origin HEAD
     rpo = remote prune origin
     cob = !sh -c 'git co -b "$0"'
     cor = !sh -c 'git co -t "$0"'
-    rmbr = !sh -c 'git branch -D "$0" && git push origin ":$0"'
-    smerge = merge --squash
-    dt = !sh -c 'git tag -d "$0" && git push origin :refs/tags/$0'
-    release-tag = !sh -c 'TAG=$0-`date +"%Y%m%d%H%M%S"` && echo "Creating Tag: $TAG" && git tag $TAG -am \"$1\" && git push --tags origin master'
     update = !sh -c 'git stash && git pull && git stash pop'
 
 [core]
@@ -74,14 +71,3 @@
 [filter "media"]
     clean = git-media-clean %f
     smudge = git-media-smudge %f
-
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path =
-
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
-
-[fetch]
-    prune = true
