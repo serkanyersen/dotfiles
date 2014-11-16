@@ -43,22 +43,21 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git osx python github brew node npm sublime terminalapp)
 
+# Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
 
+# increase file create limit
 ulimit -n 8000
 
-# alias to="mosh addv0 -- tmux attach -d"
-# alias to-bare="mosh addv0"
-
-# alias tohd="mosh addv4 -- tmux attach -d"
-# alias tohd-bare="mosh addv4"
-
-alias serkan.io="ssh -i ~/serkan.io.pem ubuntu@54.214.239.76 -t 'tmux attach'"
-
+# shortcut to connect serkan.io
+alias serkan.io="ssh -i ~/serkan.io.pem serkanio -t 'tmux attach'"
+# Basic shortcuts
 alias c="clear"
 alias vi="vim"
-alias mount-dev="sshfs -p 22 dev:/home/serkan/src/ ~/addv0 -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=addv0"
+# Connect remote server as a drive
+alias mount-dev="sshfs -p 22 dev:/home/serkan/src/ ~/addv4 -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=addv0"
 
+# Returns your last pushed commit
 function pushed-commit(){
     TAG=`git for-each-ref refs/tags --sort=-authordate --format='%(refname)' --count=1`
     GITHUBUSER=`git config --get github.user`
@@ -70,10 +69,18 @@ function pushed-commit(){
     git log $TAG --author=$AUTHOR -1 -U --no-merges
 }
 
-# Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/npm/bin
-
+# Activates Z script
 . `brew --prefix`/etc/profile.d/z.sh
 fpath=(/usr/local/share/zsh-completions $fpath)
 
+# don't use less history file
+LESSHISTFILE=/dev/null
+
+# Customize to your needs...
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/npm/bin
+
+# Where I keep python projects
 export PYTHONPATH=/Users/serkanyersen/src/
+
+# brew installed android sdk
+export ANDROID_HOME=/usr/local/opt/android-sdk

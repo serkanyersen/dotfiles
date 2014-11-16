@@ -1,0 +1,28 @@
+Host *
+    ControlMaster auto
+    ControlPath ~/.ssh/master-%r@%h:%p
+
+Host addv0
+    HostName ...
+    User serkan
+
+Host addv1
+    HostName ...
+    User serkan
+
+Host addv2
+    HostName ...
+    User serkan
+
+Host addv3
+    HostName ...
+    User serkan
+
+Host addv4
+    HostName ...
+    User serkan
+
+Host serkanio
+    HostName ...
+    User ubuntu
+    IdentityFile ~/serkan.io.pem
