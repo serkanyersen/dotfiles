@@ -54,6 +54,7 @@ alias serkan.io="ssh -i ~/serkan.io.pem serkanio -t 'tmux attach'"
 # Basic shortcuts
 alias c="clear"
 alias vi="vim"
+alias ls="ls -laG"
 # Connect remote server as a drive
 alias mount-dev="sshfs -p 22 dev:/home/serkan/src/ ~/addv4 -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=addv0"
 
