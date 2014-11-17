@@ -78,10 +78,21 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 LESSHISTFILE=/dev/null
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/npm/bin
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 # Where I keep python projects
 export PYTHONPATH=/home/serkan/src/
 
 # brew installed android sdk
 export ANDROID_HOME=/usr/local/opt/android-sdk
+
+
+SSHAGENT=/usr/bin/ssh-agent
+SSHAGENTARGS="-s"
+if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
+  eval `$SSHAGENT $SSHAGENTARGS`
+  trap "kill $SSH_AGENT_PID" 0
+fi
+
+# Enable virtual environment
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
