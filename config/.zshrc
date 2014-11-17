@@ -47,16 +47,16 @@ plugins=(git osx python github brew node npm sublime terminalapp)
 source $ZSH/oh-my-zsh.sh
 
 # increase file create limit
-ulimit -n 8000
+# ulimit -n 8000
 
 # shortcut to connect serkan.io
-alias serkan.io="ssh -i ~/serkan.io.pem serkanio -t 'tmux attach'"
+# alias serkan.io="ssh -i ~/serkan.io.pem serkanio -t 'tmux attach'"
 # Basic shortcuts
 alias c="clear"
 alias vi="vim"
-alias ls="ls -laG"
+alias ls="ls -la --color='auto'"
 # Connect remote server as a drive
-alias mount-dev="sshfs -p 22 dev:/home/serkan/src/ ~/addv4 -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=addv0"
+# alias mount-dev="sshfs -p 22 dev:/home/serkan/src/ ~/addv4 -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=addv0"
 
 # Returns your last pushed commit
 function pushed-commit(){
@@ -71,7 +71,7 @@ function pushed-commit(){
 }
 
 # Activates Z script
-. `brew --prefix`/etc/profile.d/z.sh
+. ~/z/z.sh
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # don't use less history file
@@ -81,7 +81,7 @@ LESSHISTFILE=/dev/null
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/npm/bin
 
 # Where I keep python projects
-export PYTHONPATH=/Users/serkanyersen/src/
+export PYTHONPATH=/home/serkan/src/
 
 # brew installed android sdk
 export ANDROID_HOME=/usr/local/opt/android-sdk
