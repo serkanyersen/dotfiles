@@ -1,3 +1,28 @@
+if !isdirectory(expand("~/.vim/bundle/vundle"))
+    call system("git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle")
+endif
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'bling/vim-airline'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'junegunn/vim-easy-align'
+Bundle 'vim-scripts/closetag.vim'
+Bundle 'othree/html5.vim'
+Bundle 'rstacruz/sparkup'
+Bundle 'scrooloose/nerdtree'
+
+" Automatically install bundles on first run
+if !isdirectory(expand("~/.vim/bundle/vim-airline"))
+    execute 'silent BundleInstall'
+    execute 'silent q'
+endif
+
 " Enable syntax highlighting
 syntax on
 
@@ -25,6 +50,14 @@ autocmd CursorMoved * :set relativenumber
 " Incremental search
 set incsearch
 
+" Turn off highlighting of previous search
+noremap <C-n> :nohlsearch<CR>
+
+" Map leader key
+let mapleader = ","
+let g:mapleader = ","
+let g:user_emmet_leader_key = '<C-e>'
+
 " White space settings
 set ts=2
 set sts=2
@@ -33,6 +66,26 @@ set expandtab
 
 " Better buffer management
 set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>t :enew<cr>
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+
+" Toggle NERDTree
+map <Leader>n :NERDTreeToggle<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
 
 " Display extended tab completions on cmd menu
 set wildmode=list:longest
@@ -120,6 +173,8 @@ autocmd! bufwritepost .vimrc source %
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
+" Get airline enabled on all views
+set laststatus=2
 
 " Mode Setting
 let g:syntastic_javascript_checkers=['jshint']
@@ -128,3 +183,22 @@ let g:syntastic_python_flake8_args="--select=W402,W403,W404,W405,W801,W802,W803,
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': ['python', 'javascript'],
                            \ 'passive_filetypes': ['html'] }
+
+" Enable ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|build|npm-cache|pip-cache)|(\.(swp|ico|git|svn))$'
+
+
+" Airline customizations
+let g:airline_powerline_fonts = 1
+if !exists("g:airline_symbols")
+    let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_section_y = airline#section#create(['%p', '%%'])
+let g:airline_section_z = airline#section#create_right(['%l', '%c'])
