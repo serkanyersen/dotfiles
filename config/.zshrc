@@ -41,7 +41,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx python github brew node npm sublime terminalapp)
+plugins=(git osx python github brew node npm sublime terminalapp z)
 
 # Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
@@ -70,15 +70,11 @@ function pushed-commit(){
     git log $TAG --author=$AUTHOR -1 -U --no-merges
 }
 
-# Activates Z script
-. `brew --prefix`/etc/profile.d/z.sh
-fpath=(/usr/local/share/zsh-completions $fpath)
-
 # don't use less history file
 LESSHISTFILE=/dev/null
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/npm/bin
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/npm/bin
 
 # Where I keep python projects
 export PYTHONPATH=/Users/serkanyersen/src/

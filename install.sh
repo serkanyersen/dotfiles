@@ -41,8 +41,9 @@ ln -s $HOME/dotfiles/scripts/to.sh $HOME/bin/to
 chmod +x $HOME/bin/to
 
 echo "- Files copied, enabling."
-source $HOME/.zshrc
+source ~/.zshrc
 
 # put this file here so we know install was done before
-touch $HOME/.install-done
+touch ~/.install-done
+
 echo "Install completed."
