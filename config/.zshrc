@@ -70,8 +70,6 @@ function pushed-commit(){
     git log $TAG --author=$AUTHOR -1 -U --no-merges
 }
 
-# Activates Z script
-. ~/z/z.sh
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # don't use less history file
@@ -94,5 +92,3 @@ if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
   trap "kill $SSH_AGENT_PID" 0
 fi
 
-# Enable virtual environment
-source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
