@@ -40,6 +40,9 @@
 [push]
     default = tracking
 
+[commit]
+    verbose = true
+
 [fetch]
     prune = true
 
