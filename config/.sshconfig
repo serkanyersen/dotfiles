@@ -2,27 +2,24 @@ Host *
     ControlMaster auto
     ControlPath ~/.ssh/master-%r@%h:%p
 
-Host addv0
-    HostName ...
-    User serkan
-
-Host addv1
-    HostName ...
-    User serkan
-
-Host addv2
-    HostName ...
-    User serkan
-
 Host addv3
-    HostName ...
+    HostName 10.209.76.193
     User serkan
 
 Host addv4
-    HostName ...
+    HostName 10.209.73.10
     User serkan
 
+Host addv5
+    HostName 10.210.192.27
+    User serkan
+
+Host addv6
+    HostName 10.177.8.159
+    User serkan
+
+
 Host serkanio
-    HostName ...
+    HostName 54.214.239.76
     User ubuntu
     IdentityFile ~/serkan.io.pem
