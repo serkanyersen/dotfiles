@@ -1,4 +1,5 @@
-# Path to your oh-my-zsh configuration.
+#
+#Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
@@ -45,9 +46,6 @@ plugins=(git osx python github brew node npm sublime terminalapp z)
 
 # Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
-
-# increase file create limit
-ulimit -n 8000
 
 # shortcut to connect serkan.io
 alias serkan.io="ssh -i ~/serkan.io.pem serkanio -t 'tmux attach'"

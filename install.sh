@@ -8,18 +8,20 @@ fi
 
 if [[ -d $HOME/.dotfiles-backup ]]
 then
-  $DATE=`date +%s`
-  mv $HOME/.dotfiles-backup-$DATE
+  DATE=$(date +%s)
+  mv $HOME/.dotfiles-backup $HOME/.dotfiles-backup-$DATE
   echo "- Old backup folder found. moving to .dotfiles-backup-$DATE"
 fi
 
 echo "- Backing up existing files."
 mkdir $HOME/.dotfiles-backup
+
+# Find a way to do this expandedn
 mv $HOME/.vim* $HOME/.dotfiles-backup
-mv $HOME/.zshrc $HOME/.dotfiles-backup
-mv $HOME/.gitconfig $HOME/.dotfiles-backup
-mv $HOME/.ssh/config $HOME/.dotfiles-backup/.ssh-config
-mv $HOME/.tmux.conf $HOME/.dotfiles-backup
+[[ -f $HOME/.zshrc ]] && mv $HOME/.zshrc $HOME/.dotfiles-backup
+[[ -f $HOME/.gitconfig ]] && mv $HOME/.gitconfig $HOME/.dotfiles-backup
+[[ -f $HOME/.ssh/config ]] && mv $HOME/.ssh/config $HOME/.dotfiles-backup/.ssh-config
+[[ -f $HOME/.tmux.conf ]] && mv $HOME/.tmux.conf $HOME/.dotfiles-backup
 echo "-- backup done: $HOME/.dotfiles-backup"
 
 if [[ $SHELL != *"/zsh"* ]]
@@ -42,6 +44,12 @@ ln -s $HOME/dotfiles/config/.zshrc $HOME
 ln -s $HOME/dotfiles/config/.gitconfig $HOME
 ln -s $HOME/dotfiles/config/.sshconfig $HOME/.ssh/config
 ln -s $HOME/dotfiles/config/.tmux.conf $HOME
+
+if [[ ! -d $HOME/bin/ ]]
+then
+  echo "- creating local bin folder"
+  mkdir $HOME/bin/
+fi
 
 echo "- Installing 'to' script."
 if [[ -f $HOME/bin/to ]]
