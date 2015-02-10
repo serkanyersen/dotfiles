@@ -16,6 +16,8 @@ Bundle 'vim-scripts/closetag.vim'
 Bundle 'othree/html5.vim'
 Bundle 'rstacruz/sparkup'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'terryma/vim-multiple-cursors'
 
 " Automatically install bundles on first run
 if !isdirectory(expand("~/.vim/bundle/vim-airline"))
@@ -51,7 +53,7 @@ autocmd CursorMoved * :set relativenumber
 set incsearch
 
 " Turn off highlighting of previous search
-noremap <C-n> :nohlsearch<CR>
+"noremap <C-n> :nohlsearch<CR>
 
 " Map leader key
 let mapleader = ","
