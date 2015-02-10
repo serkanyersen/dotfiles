@@ -1,4 +1,5 @@
-# Path to your oh-my-zsh configuration.
+#
+#Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
@@ -46,9 +47,6 @@ plugins=(git python github node npm colorize tmux tmuxinator z)
 # Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
 
-# increase file create limit
-# ulimit -n 8000
-
 # shortcut to connect serkan.io
 # alias serkan.io="ssh -i ~/serkan.io.pem serkanio -t 'tmux attach'"
 # Basic shortcuts
@@ -70,13 +68,11 @@ function pushed-commit(){
     git log $TAG --author=$AUTHOR -1 -U --no-merges
 }
 
-fpath=(/usr/local/share/zsh-completions $fpath)
-
 # don't use less history file
 LESSHISTFILE=/dev/null
 
 # Customize to your needs...
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 
 # Where I keep python projects
 export PYTHONPATH=/home/serkan/src/
