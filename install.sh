@@ -6,14 +6,21 @@ then
   exit 0
 fi
 
+if [[ -d $HOME/.dotfiles-backup ]]
+then
+  $DATE=`date +%s`
+  mv $HOME/.dotfiles-backup-$DATE
+  echo "- Old backup folder found. moving to .dotfiles-backup-$DATE"
+fi
+
 echo "- Backing up existing files."
-mkdir ~/.dotfiles-backup
-mv ~/.vim* ~/.dotfiles-backup
-mv ~/.zshrc ~/.dotfiles-backup
-mv ~/.gitconfig ~/.dotfiles-backup
-mv ~/.ssh/config ~/.dotfiles-backup/.ssh-config
-mv ~/.tmux.conf ~/.dotfiles-backup
-echo "-- backup done: ~/.dotfiles-backup"
+mkdir $HOME/.dotfiles-backup
+mv $HOME/.vim* $HOME/.dotfiles-backup
+mv $HOME/.zshrc $HOME/.dotfiles-backup
+mv $HOME/.gitconfig $HOME/.dotfiles-backup
+mv $HOME/.ssh/config $HOME/.dotfiles-backup/.ssh-config
+mv $HOME/.tmux.conf $HOME/.dotfiles-backup
+echo "-- backup done: $HOME/.dotfiles-backup"
 
 if [[ $SHELL != *"/zsh"* ]]
 then
@@ -37,13 +44,18 @@ ln -s $HOME/dotfiles/config/.sshconfig $HOME/.ssh/config
 ln -s $HOME/dotfiles/config/.tmux.conf $HOME
 
 echo "- Installing 'to' script."
-ln -s $HOME/dotfiles/scripts/to.sh $HOME/bin/to
-chmod +x $HOME/bin/to
+if [[ -f $HOME/bin/to ]]
+then
+  echo "- to script was already there. could not install."
+else
+  ln -s $HOME/dotfiles/scripts/to.sh $HOME/bin/to
+  chmod +x $HOME/bin/to
+fi
 
 echo "- Files copied, enabling."
-source ~/.zshrc
+source $HOME/.zshrc
 
 # put this file here so we know install was done before
-touch ~/.install-done
+touch $HOME/.install-done
 
 echo "Install completed."
