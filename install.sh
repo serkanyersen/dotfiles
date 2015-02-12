@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ -f $HOME/.install-done ]]
+if [[ -f $HOME/dotfiles/.install-done ]]
 then
   echo "Dotfiles already installed."
   exit 0
@@ -24,18 +24,14 @@ mv $HOME/.vim* $HOME/.dotfiles-backup
 [[ -f $HOME/.tmux.conf ]] && mv $HOME/.tmux.conf $HOME/.dotfiles-backup
 echo "-- backup done: $HOME/.dotfiles-backup"
 
-if [[ $SHELL != *"/zsh"* ]]
-then
-  echo "- Setting zsh as default for current user."
-  sudo chsh -s $(which zsh) $(whoami)
-fi
-
 if [[ -d $HOME/.oh-my-zsh ]]
 then
   echo "- oh-my-zsh is already installed."
 else
   echo "- Installing oh-my-zsh."
   curl -L http://install.ohmyz.sh | sh
+  # ohmyzsh adds it's own file, remove it
+  rm $HOME/.zshrc
 fi
 
 echo "- Copying new dotfiles"
@@ -44,6 +40,13 @@ ln -s $HOME/dotfiles/config/.zshrc $HOME
 ln -s $HOME/dotfiles/config/.gitconfig $HOME
 ln -s $HOME/dotfiles/config/.sshconfig $HOME/.ssh/config
 ln -s $HOME/dotfiles/config/.tmux.conf $HOME
+
+if [[ $SHELL != *"/zsh"* ]]
+then
+  echo "- Setting zsh as default for current user."
+  sudo chsh -s $(which zsh) $(whoami)
+  zsh # switch to zsh
+fi
 
 if [[ ! -d $HOME/bin/ ]]
 then
@@ -64,6 +67,6 @@ echo "- Files copied, enabling."
 source $HOME/.zshrc
 
 # put this file here so we know install was done before
-touch $HOME/.install-done
+touch $HOME/dotfiles/.install-done
 
 echo "Install completed."
