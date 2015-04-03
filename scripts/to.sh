@@ -53,7 +53,7 @@ NO_COLOR="\033[0m"
 
 # Defaults
 HOST='addv4'
-USER='serkan'
+USER=''
 
 # Configs
 VERSION=1.0.0
@@ -65,7 +65,7 @@ DEBUG=0
 usage() {
     echo -e "$GREEN Usage$NO_COLOR: Calling without arguments will connect using defaults
 $GREEN Version:$NO_COLOR: $VERSION
-$GREEN Defaults$NO_COLOR: $CMD $USER@$HOST $TMUX
+$GREEN Defaults$NO_COLOR: $CMD $USER$HOST $TMUX
 $GREEN Parameters$NO_COLOR:
     [-h <hostname>]$GRAY Change host name$NO_COLOR
     [-u <user>]$GRAY Change username$NO_COLOR
@@ -102,7 +102,7 @@ while getopts ":h:u:-:nsd" o; do
             HOST=${OPTARG}
             ;;
         u)
-            USER=${OPTARG}
+            USER=${OPTARG}@
             ;;
         n)
             TMUX=''
@@ -131,16 +131,16 @@ while getopts ":h:u:-:nsd" o; do
 done
 
 # Change the title of the window
-echo -e '\033k'$USER@$HOST'\033\\'
+echo -e '\033k'$USER$HOST'\033\\'
 
 # Execute the command
 if [ $DEBUG = 1 ]; then
     echo 'Command to execute:'
-    echo -e $GREEN$CMD $USER@$HOST $TMUX $NO_COLOR
+    echo -e $GREEN$CMD $USER$HOST $TMUX $NO_COLOR
 else
     # Print progress
     echo -e $GREEN'Connecting to' $HOST$NO_COLOR
-    $CMD $USER@$HOST $TMUX
+    $CMD $USER$HOST $TMUX
 fi
 
 # Exit with success
