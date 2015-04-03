@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -u
+
 if [[ -f $HOME/dotfiles/.install-done ]]
 then
   echo "Dotfiles already installed."
