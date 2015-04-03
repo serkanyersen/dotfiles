@@ -18,8 +18,11 @@ Host addv6
     HostName 10.177.8.159
     User serkan
 
+Host osmc
+    HostName 10.0.0.12
+    User osmc
 
 Host serkanio
     HostName 54.214.239.76
     User ubuntu
-    IdentityFile ~/serkan.io.pem
+    IdentityFile /Users/serkanyersen/serkan.io.pem
