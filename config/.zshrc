@@ -54,7 +54,7 @@ alias c="clear"
 alias vi="vim"
 alias tree="tree -Cat | less"
 alias ls="ls -laG"
-alias port-forward-enable="echo 'rdr pass inet proto tcp from any to any port 80 -> 127.0.0.1 port 8080' | sudo pfctl -ef -"
+alias port-forward-enable="echo 'rdr pass inet proto tcp from any to any port 80 -> 127.0.0.1 port 8090' | sudo pfctl -ef -"
 alias port-forward-disable="sudo pfctl -F all -f /etc/pf.conf"
 alias port-forward-list="sudo pfctl -s nat"
 # Connect remote server as a drive

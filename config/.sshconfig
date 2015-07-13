@@ -1,6 +1,7 @@
 Host *
     ControlMaster auto
     ControlPath ~/.ssh/master-%r@%h:%p
+    Compression yes
 
 Host addv3
     HostName 10.209.76.193
