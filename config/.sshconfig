@@ -19,8 +19,12 @@ Host addv6
     HostName 10.177.8.159
     User serkan
 
+Host addv7
+    HostName 10.209.130.137
+    User serkan
+
 Host osmc
-    HostName 10.0.0.12
+    HostName 10.0.0.165
     User osmc
 
 Host serkanio
