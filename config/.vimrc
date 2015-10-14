@@ -18,6 +18,8 @@ Bundle 'rstacruz/sparkup'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'scrooloose/syntastic'
 
 " Automatically install bundles on first run
 if !isdirectory(expand("~/.vim/bundle/vim-airline"))
@@ -28,8 +30,14 @@ endif
 " Enable syntax highlighting
 syntax on
 
+" Highligh mathches
+set showmatch " highlight matching [{()}]
+
 " Intuitive backspacing in insert mode
 set backspace=indent,eol,start
+
+" Show white space
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 
 " Recognize filetypes
 filetype on
@@ -53,7 +61,15 @@ autocmd CursorMoved * :set relativenumber
 set incsearch
 
 " Turn off highlighting of previous search
-"noremap <C-n> :nohlsearch<CR>
+nnoremap <leader><space> :nohlsearch<CR>
+
+" Folding
+set foldenable          " enable folding
+set foldlevelstart=99   " open all folds by default
+set foldnestmax=10      " 10 nested fold max
+set foldmethod=indent   " fold based on indent level
+" space open/closes folds
+nnoremap <space> za
 
 " Map leader key
 let mapleader = ","
@@ -196,10 +212,10 @@ let g:airline_powerline_fonts = 1
 if !exists("g:airline_symbols")
     let g:airline_symbols = {}
 endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = '❯'
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = '❮'
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_section_y = airline#section#create(['%p', '%%'])

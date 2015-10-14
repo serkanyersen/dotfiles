@@ -60,6 +60,7 @@
     # unstage = reset --hard HEAD
     unstage = !sh -c 'git reset --hard HEAD && git clean -fd'
     put = push origin HEAD
+    undo = reset --soft HEAD^
     rpo = remote prune origin
     cob = !sh -c 'git co -b "$0"'
     cor = !sh -c 'git co -t "$0"'

@@ -1,6 +1,7 @@
 Host *
     ControlMaster auto
     ControlPath ~/.ssh/master-%r@%h:%p
+    Compression yes
 
 Host addv3
     HostName 10.209.76.193
@@ -18,8 +19,15 @@ Host addv6
     HostName 10.177.8.159
     User serkan
 
+Host addv7
+    HostName 10.209.130.137
+    User serkan
+
+Host osmc
+    HostName 10.0.0.165
+    User osmc
 
 Host serkanio
     HostName 54.214.239.76
     User ubuntu
-    IdentityFile ~/serkan.io.pem
+    IdentityFile /Users/serkanyersen/serkan.io.pem
