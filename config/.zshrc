@@ -42,7 +42,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git grunt osx python github brew node npm sublime terminalapp z thefuck)
+plugins=(git grunt osx python github brew node npm nvm sublime terminalapp z thefuck)
 
 # Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
@@ -52,7 +52,7 @@ alias serkan.io="ssh -i ~/serkan.io.pem serkanio -t 'tmux attach'"
 # Basic shortcuts
 alias c="clear"
 alias vi="vim"
-alias tree="tree -Cat | less"
+alias xtree="tree -Cat | less"
 alias ls="ls -laG"
 alias port-forward-enable="echo 'rdr pass inet proto tcp from any to any port 80 -> 127.0.0.1 port 8090' | sudo pfctl -ef -"
 alias port-forward-disable="sudo pfctl -F all -f /etc/pf.conf"
@@ -83,3 +83,10 @@ export PYTHONPATH=/Users/serkanyersen/src/
 
 # brew installed android sdk
 export ANDROID_HOME=/usr/local/opt/android-sdk
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

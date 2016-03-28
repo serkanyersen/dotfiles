@@ -112,6 +112,17 @@ else
   info "to script installed."
 fi
 
+info "Installing 'imgcat' script"
+if [[ -f $HOME/bin/imgcat ]]
+then
+  info "imgcat was already there. could not install."
+else
+  ln -s $DOTFILES_ROOT/scripts/imgcat.sh $HOME/bin/imgcat
+  chmod +x $HOME/bin/imgcat
+  info "imgcat installed."
+fi
+
+
 info "Files copied, enabling."
 set +e
 set +u
