@@ -57,8 +57,11 @@ fi
 info "Backing up existing files."
 mkdir $HOME/.dotfiles-backup
 
-# Find a way to do this expandedn
-mv $HOME/.vim* $HOME/.dotfiles-backup
+if [[ -d $HOME/.vim ]]
+then
+    mv $HOME/.vim* $HOME/.dotfiles-backup
+fi
+
 [[ -f $HOME/.zshrc ]] && mv $HOME/.zshrc $HOME/.dotfiles-backup
 [[ -f $HOME/.gitconfig ]] && mv $HOME/.gitconfig $HOME/.dotfiles-backup
 [[ -f $HOME/.ssh/config ]] && mv $HOME/.ssh/config $HOME/.dotfiles-backup/.ssh-config
