@@ -18,6 +18,8 @@ Bundle 'rstacruz/sparkup'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'scrooloose/syntastic'
 
 " Automatically install bundles on first run
 if !isdirectory(expand("~/.vim/bundle/vim-airline"))
@@ -28,8 +30,14 @@ endif
 " Enable syntax highlighting
 syntax on
 
+" Highligh mathches
+set showmatch " highlight matching [{()}]
+
 " Intuitive backspacing in insert mode
 set backspace=indent,eol,start
+
+" Show white space
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 
 " Recognize filetypes
 filetype on
