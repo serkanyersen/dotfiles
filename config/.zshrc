@@ -88,3 +88,10 @@ if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
   trap "kill $SSH_AGENT_PID" 0
 fi
 
+export MONGO_URL='mongodb://localhost:27017/site'
+export PORT=80
+export ROOT_URL='http://serkan.io'
+
+
+export NVM_DIR="/home/ubuntu/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
