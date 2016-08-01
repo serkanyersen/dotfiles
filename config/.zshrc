@@ -42,10 +42,12 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git grunt osx python github brew node npm nvm sublime terminalapp z thefuck)
+plugins=(git brew z)
 
 # Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
+
+export EDITOR='vim'
 
 # shortcut to connect serkan.io
 alias serkan.io="ssh -i ~/serkan.io.pem serkanio -t 'tmux attach'"
@@ -58,7 +60,9 @@ alias port-forward-enable="echo 'rdr pass inet proto tcp from any to any port 80
 alias port-forward-disable="sudo pfctl -F all -f /etc/pf.conf"
 alias port-forward-list="sudo pfctl -s nat"
 # Connect remote server as a drive
-alias mount-kodi="sshfs -p 22 osmc@10.0.0.12:/home/osmc/.kodi ~/kodi -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=kodi"
+alias mount-serkanio="sshfs -p 22 serkanio:/home/ubuntu ~/serkanio -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=serkanio"
+alias reload="source ~/.zshrc"
+alias edit="$EDITOR ~/.zshrc"
 
 # Returns your last pushed commit
 function pushed-commit(){
@@ -86,7 +90,27 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+  . $LUNCHY_DIR/lunchy-completion.zsh
+fi
+
+export NVM_DIR="/Users/serkanyersen/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+
+source /usr/local/bin/virtualenvwrapper.sh
+export CODE_TSJS=1
+export VSCODE_TSJS=1
+
+
+

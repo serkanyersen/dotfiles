@@ -1,6 +1,7 @@
 [user]
     name = Serkan Yersen
     email = serkanyersen@gmail.com
+	signingkey = D0C830C4
 
 [github]
     user = serkanyersen
@@ -23,10 +24,6 @@
     added = yellow
     changed = green
     untracked = cyan
-
-[diff]
-    renames = true
-    mnemonicprefix = true
 
 [branch]
     autosetuprebase = always
@@ -67,10 +64,8 @@
     update = !sh -c 'git stash && git pull && git stash pop'
 
 [core]
-    editor = vim
-
-[merge]
-    tool = opendiff
+	editor = vim
+	excludesfile = /Users/serkanyersen/.gitignore_global
 
 [filter "media"]
     clean = git-media-clean %f
@@ -85,5 +80,34 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+
 [pull]
 	rebase = true
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[diff]
+  tool = meld
+
+[difftool]
+  prompt = false
+
+[difftool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
+
+[merge]
+  tool = meld
+
+[mergetool]
+  prompt = false
+
+[mergetool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output \"$PWD/$MERGED\"
