@@ -21,6 +21,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'scrooloose/syntastic'
+Bundle 'posva/vim-vue'
 
 " Automatically install bundles on first run
 if !isdirectory(expand("~/.vim/bundle/vim-airline"))
@@ -215,7 +216,7 @@ if !exists("g:airline_symbols")
 endif
 
 " A Nice dark theme
-let g:airline_theme = 'jay'
+let g:airline_theme = 'powerlineish'
 
 " Makes exiting insert mode faster
 set ttimeoutlen=10

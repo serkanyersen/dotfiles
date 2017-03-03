@@ -42,7 +42,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew z)
+plugins=(git github npm sublime brew z)
 
 # Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
@@ -63,6 +63,12 @@ alias port-forward-list="sudo pfctl -s nat"
 alias mount-serkanio="sshfs -p 22 serkanio:/home/ubuntu ~/serkanio -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=serkanio"
 alias reload="source ~/.zshrc"
 alias edit="$EDITOR ~/.zshrc"
+alias batt="python /Users/serkanyersen/code/scripts/battery.py"
+alias sleepsafe='sudo pmset -a destroyfvkeyonstandby 1 hibernatemode 25'
+alias sleepfast='sudo pmset -a hibernatemode 0'
+alias sleepdefault='sudo pmset -a hibernatemode 3'
+alias dc="docker-compose"
+
 
 # Returns your last pushed commit
 function pushed-commit(){
@@ -82,35 +88,6 @@ LESSHISTFILE=/dev/null
 # Customize to your needs...
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/npm/bin
 
-# Where I keep python projects
-export PYTHONPATH=/Users/serkanyersen/src/
-
-# brew installed android sdk
-export ANDROID_HOME=/usr/local/opt/android-sdk
-
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
-if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-  . $LUNCHY_DIR/lunchy-completion.zsh
-fi
-
-export NVM_DIR="/Users/serkanyersen/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-autoload -U add-zsh-hook
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-
-source /usr/local/bin/virtualenvwrapper.sh
-export CODE_TSJS=1
-export VSCODE_TSJS=1
-
-
-
+source ~/.exportsrc
