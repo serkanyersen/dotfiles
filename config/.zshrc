@@ -42,7 +42,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github npm sublime brew z)
+plugins=(git github npm sublime brew z docker-compose docker yarn cp httpie osx)
 
 # Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
@@ -55,7 +55,7 @@ alias serkan.io="ssh -i ~/serkan.io.pem serkanio -t 'tmux attach'"
 alias c="clear"
 alias vi="vim"
 alias xtree="tree -Cat | less"
-alias ls="ls -laG"
+alias ls="ls -lFaGh"
 alias port-forward-enable="echo 'rdr pass inet proto tcp from any to any port 80 -> 127.0.0.1 port 8090' | sudo pfctl -ef -"
 alias port-forward-disable="sudo pfctl -F all -f /etc/pf.conf"
 alias port-forward-list="sudo pfctl -s nat"
@@ -69,6 +69,7 @@ alias sleepfast='sudo pmset -a hibernatemode 0'
 alias sleepdefault='sudo pmset -a hibernatemode 3'
 alias dc="docker-compose"
 
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 # Returns your last pushed commit
 function pushed-commit(){

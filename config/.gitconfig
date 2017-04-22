@@ -39,7 +39,7 @@
 
 [commit]
     verbose = true
-    # gpgsign = true
+    gpgsign = true
 
 [fetch]
     prune = true
