@@ -22,6 +22,9 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'posva/vim-vue'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'editorconfig/editorconfig-vim'
+Bundle 'mattn/emmet-vim'
 
 " Automatically install bundles on first run
 if !isdirectory(expand("~/.vim/bundle/vim-airline"))
@@ -63,7 +66,7 @@ autocmd CursorMoved * :set relativenumber
 set incsearch
 
 " Turn off highlighting of previous search
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader><esc> :nohlsearch<CR>
 
 " Folding
 set foldenable          " enable folding
@@ -86,6 +89,12 @@ set expandtab
 
 " Better buffer management
 set hidden
+
+" "dark" or "light", used for highlight colors
+colorscheme solarized
+let g:solarized_termcolors=256
+set background=dark
+call togglebg#map("<F5>")
 
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
@@ -133,9 +142,6 @@ set scrolloff=3
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-" "dark" or "light", used for highlight colors
-set background=light
-
 " Scroll viewport using CTRL-c and CTRL-y
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
@@ -161,8 +167,8 @@ set noshowmode
 " Disable bell and visalbell
 set visualbell t_vb=
 
-" Enable mouse in insert mode
-set mouse=i
+" Enable mouse in all modes
+set mouse=a
 
 " Display a column on 80th char
 set colorcolumn=80
@@ -220,4 +226,5 @@ let g:airline_theme = 'powerlineish'
 
 " Makes exiting insert mode faster
 set ttimeoutlen=10
+
 

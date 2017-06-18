@@ -68,6 +68,10 @@ alias sleepsafe='sudo pmset -a destroyfvkeyonstandby 1 hibernatemode 25'
 alias sleepfast='sudo pmset -a hibernatemode 0'
 alias sleepdefault='sudo pmset -a hibernatemode 3'
 alias dc="docker-compose"
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
+alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
+
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
