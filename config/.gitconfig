@@ -78,37 +78,33 @@
     required = true
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 	required = true
+	clean = git-lfs clean -- %f
 
 [pull]
 	rebase = true
 
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+[difftool "Kaleidoscope"]
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+# If you want to set up Kaleidoscope as the default diff tool,
+# then also set the following variables:
+[difftool]
+    prompt = false
 
 [diff]
-  tool = meld
+    tool = Kaleidoscope
 
-[difftool]
-  prompt = false
+[mergetool "Kaleidoscope"]
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" \"$REMOTE\"
 
-[difftool "meld"]
-  trustExitCode = true
-  cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
+# If you want to set up Kaleidoscope as the default merge tool,
+# then also set the following variables:
+[mergetool]
+    prompt = false
 
 [merge]
-  tool = meld
+    tool = Kaleidoscope
 
-[mergetool]
-  prompt = false
-
-[mergetool "meld"]
-  trustExitCode = true
-  cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output \"$PWD/$MERGED\"

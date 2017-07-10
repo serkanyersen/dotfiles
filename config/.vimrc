@@ -1,34 +1,35 @@
 if !isdirectory(expand("~/.vim/bundle/vundle"))
-    call system("git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle")
+    call system("git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle")
 endif
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'fholgado/minibufexpl.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'junegunn/vim-easy-align'
-Bundle 'vim-scripts/closetag.vim'
-Bundle 'othree/html5.vim'
-Bundle 'rstacruz/sparkup'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'posva/vim-vue'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'mattn/emmet-vim'
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'vim-scripts/closetag.vim'
+Plugin 'othree/html5.vim'
+Plugin 'rstacruz/sparkup'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'posva/vim-vue'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'mattn/emmet-vim'
+call vundle#end()
 
 " Automatically install bundles on first run
 if !isdirectory(expand("~/.vim/bundle/vim-airline"))
-    execute 'silent BundleInstall'
+    execute 'silent PluginInstall'
     execute 'silent q'
 endif
 
@@ -65,9 +66,6 @@ autocmd CursorMoved * :set relativenumber
 " Incremental search
 set incsearch
 
-" Turn off highlighting of previous search
-nnoremap <leader><esc> :nohlsearch<CR>
-
 " Folding
 set foldenable          " enable folding
 set foldlevelstart=99   " open all folds by default
@@ -80,6 +78,9 @@ nnoremap <space> za
 let mapleader = ","
 let g:mapleader = ","
 let g:user_emmet_leader_key = '<C-e>'
+
+" Turn off highlighting of previous search
+nnoremap <leader><esc> :nohlsearch<CR>
 
 " White space settings
 set ts=2
@@ -214,7 +215,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|build|npm-cache|pip-cache)|(\.(swp|ico|git|svn))$'
 
-
 " Airline customizations
 let g:airline_powerline_fonts = 1
 if !exists("g:airline_symbols")
@@ -226,5 +226,4 @@ let g:airline_theme = 'powerlineish'
 
 " Makes exiting insert mode faster
 set ttimeoutlen=10
-
 

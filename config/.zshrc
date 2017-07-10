@@ -6,7 +6,21 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="bira"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator node_version time)
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_with_package_name"
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
+POWERLEVEL9K_MODE='awesome-patched'
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B0'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\ue0b2'
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="$ "
+
+# ZLE_RPROMPT_INDENT=-1
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
