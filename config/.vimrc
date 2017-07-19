@@ -5,26 +5,24 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'vim-scripts/closetag.vim'
-Plugin 'othree/html5.vim'
-Plugin 'rstacruz/sparkup'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'posva/vim-vue'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'mattn/emmet-vim'
+Plugin 'VundleVim/Vundle.vim'               " vundle is managed by vundle
+Plugin 'kien/ctrlp.vim'                     " Control+P to open files quicly
+Plugin 'fholgado/minibufexpl.vim'           " Buffer Explorer, that shows your buffers like tabs at the top
+Plugin 'tpope/vim-fugitive'                 " Only the best Git wrapper of all time
+Plugin 'vim-airline/vim-airline'            " Shows cool status line for your vim
+Plugin 'vim-airline/vim-airline-themes'     " Even cooler themes for your airline
+Plugin 'Lokaltog/vim-easymotion'            " Easily move around in files (<leader><leader>s)
+Plugin 'vim-scripts/closetag.vim'           " Closes un closed tags (ctrl-_)
+Plugin 'othree/html5.vim'                   " Syntax and autocomplete for html5 features
+Plugin 'scrooloose/nerdtree'                " Opens a tree view of your project (<leader>n)
+Plugin 'scrooloose/nerdcommenter'           " Comment operations, comment out lines easily ([count]<leader>c<space>)
+Plugin 'terryma/vim-multiple-cursors'       " Adds multiple cursors in the editor like sublime (Ctrl+n) use it with visual (Ctrl+V)
+Plugin 'leafgarland/typescript-vim'         " Adds TypeScript support
+Plugin 'scrooloose/syntastic'               " Shows syntax errors reported by language helpers
+Plugin 'posva/vim-vue'                      " support for VUE files
+Plugin 'altercation/vim-colors-solarized'   " Color scheme for solarized
+Plugin 'editorconfig/editorconfig-vim'      " Editorconfig support
+Plugin 'mattn/emmet-vim'                    " Expand HTML syntax using CSS (<ctrl-y>,)
 call vundle#end()
 
 " Automatically install bundles on first run

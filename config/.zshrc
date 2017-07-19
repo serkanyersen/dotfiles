@@ -56,7 +56,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github npm sublime brew z docker-compose docker yarn cp httpie osx)
+plugins=(git github npm sublime brew z docker-compose docker yarn cp httpie osx nvm)
 
 # Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
@@ -86,7 +86,8 @@ alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
 alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
 
-
+# tools
+function weather() { curl "http://wttr.in/$1?m";}
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 # Returns your last pushed commit
@@ -108,5 +109,8 @@ LESSHISTFILE=/dev/null
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/npm/bin
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
 
 source ~/.exportsrc
