@@ -1,6 +1,6 @@
 [user]
-    name = Serkan Yersen
-    email = serkanyersen@gmail.com
+	name = Serkan Yersen
+	email = serkanyersen@gmail.com
   	signingkey = 51D7C443BB168EDC
 
 [github]
@@ -78,10 +78,10 @@
     required = true
 
 [filter "lfs"]
+	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-	clean = git-lfs clean -- %f
 
 [pull]
 	rebase = true
