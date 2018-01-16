@@ -115,9 +115,6 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
-" Display extended tab completions on cmd menu
-set wildmode=list:longest
-
 " Set case insensivity and smart replace
 set ignorecase
 set smartcase
