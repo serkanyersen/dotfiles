@@ -30,7 +30,7 @@ Host osmc
 Host serkanio
     HostName 54.214.239.76
     User ubuntu
-    IdentityFile /Users/serkanyersen/.ssh/serkan.io.pem
+    IdentityFile /Users/serkan/.ssh/serkan.io.pem
 
 Host serkan-io
     Hostname 104.131.181.62 
