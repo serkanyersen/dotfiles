@@ -88,6 +88,9 @@ done
 ln -s $DOTFILES_ROOT/config/.sshconfig $HOME/.ssh/config
 success ".ssh/config linked"
 
+touch ~/.exportsrc
+success "exports file created"
+
 success "All dotfiles are linked"
 
 if [[ $SHELL != *"/zsh"* ]]
@@ -104,27 +107,6 @@ then
   mkdir $HOME/bin/
   success "$HOME/bin/ Done"
 fi
-
-info "Installing 'to' script."
-if [[ -f $HOME/bin/to ]]
-then
-  info "to script was already there. could not install."
-else
-  ln -s $DOTFILES_ROOT/scripts/to.sh $HOME/bin/to
-  chmod +x $HOME/bin/to
-  info "to script installed."
-fi
-
-info "Installing 'imgcat' script"
-if [[ -f $HOME/bin/imgcat ]]
-then
-  info "imgcat was already there. could not install."
-else
-  ln -s $DOTFILES_ROOT/scripts/imgcat.sh $HOME/bin/imgcat
-  chmod +x $HOME/bin/imgcat
-  info "imgcat installed."
-fi
-
 
 info "Files copied, enabling."
 set +e
