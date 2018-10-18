@@ -68,28 +68,26 @@ fi
 [[ -f $HOME/.tmux.conf ]] && mv $HOME/.tmux.conf $HOME/.dotfiles-backup
 success "Backup done: $HOME/.dotfiles-backup"
 
-if [[ -d $HOME/.oh-my-zsh ]]
-then
-  info "oh-my-zsh is already installed."
-else
-  info "Installing oh-my-zsh."
-  curl -L http://install.ohmyz.sh | sh
-  # ohmyzsh adds it's own file, remove it
-  rm $HOME/.zshrc
-  success "Done"
-fi
+info "Installing Homebrew"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+success "Homebrew installed."
 
 info "Copying new dotfiles"
 for file in .vimrc .zshrc .gitconfig .tmux.conf; do
   ln -s $DOTFILES_ROOT/config/$file $HOME
   success "$file linked"
 done
+
 # Special path
 ln -s $DOTFILES_ROOT/config/.sshconfig $HOME/.ssh/config
 success ".ssh/config linked"
 
 touch ~/.exportsrc
 success "exports file created"
+
+info "Install brew packages"
+brew install antigen httpie hub vim exa bat fzf nvm yarn
+success "Packages are installed"
 
 success "All dotfiles are linked"
 
