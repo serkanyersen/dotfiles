@@ -1,7 +1,7 @@
 [user]
 	name = Serkan Yersen
 	email = serkanyersen@gmail.com
-  	signingkey = 51D7C443BB168EDC
+ 	signingkey = 51D7C443BB168EDC
 
 [github]
     user = serkanyersen
@@ -39,7 +39,7 @@
 
 [commit]
     verbose = true
-    gpgsign = true
+    # gpgsign = true
 
 [fetch]
     prune = true
