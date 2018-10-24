@@ -1,4 +1,5 @@
 source /usr/local/share/antigen/antigen.zsh
+source ~/.exportsrc
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -17,24 +18,25 @@ antigen bundle httpie
 antigen bundle osx
 antigen bundle nvm
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle andrewferrier/fzf-z
 
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs)
-# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator node_version time)
-# POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-# POWERLEVEL9K_SHORTEN_STRATEGY="truncate_with_package_name"
-# POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
-# POWERLEVEL9K_MODE='awesome-patched'
-# POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B0'
-# POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\ue0b2'
-# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-# #POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-# POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="$ "
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator node_version time)
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_with_package_name"
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
+POWERLEVEL9K_MODE='awesome-patched'
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B0'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\ue0b2'
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="$ "
 
-# antigen theme bhilburn/powerlevel9k powerlevel9k
+antigen theme bhilburn/powerlevel9k powerlevel9k
 
 antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
+# antigen bundle sindresorhus/pure
 
 antigen apply
 
@@ -74,5 +76,3 @@ if [ -f '/Users/serkan/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then so
 
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
-
-source ~/.exportsrc
