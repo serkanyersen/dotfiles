@@ -42,6 +42,7 @@ antigen apply
 
 export EDITOR='vim'
 COMPLETION_WAITING_DOTS="true"
+LESSHISTFILE=/dev/null
 
 # shortcut to connect serkan.io
 alias serkan.io="ssh -i ~/serkan.io.pem serkanio -t 'tmux attach'"
@@ -62,17 +63,17 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --git-ignore'
 function weather() { curl "http://wttr.in/$1?m";}
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
-LESSHISTFILE=/dev/null
-source ~/.exportsrc
-
-
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/serkan/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/serkan/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '~/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '~/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/serkan/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/serkan/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '~/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '~/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+if [ -f '/usr/local/opt/nvm/nvm.sh' ]; then
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+. "/usr/local/opt/nvm/nvm.sh" --no-use
+fi
+
+export PATH="$PATH:`yarn global bin`"

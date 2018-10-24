@@ -86,7 +86,7 @@ touch ~/.exportsrc
 success "exports file created"
 
 info "Install brew packages"
-brew install antigen httpie hub vim exa bat fzf nvm yarn
+brew install antigen httpie hub vim exa bat fzf nvm yarn fd jq tig tmux
 success "Packages are installed"
 
 success "All dotfiles are linked"
