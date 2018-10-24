@@ -85,7 +85,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   info "Installing Homebrew"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   success "Homebrew installed."
-elif [[ "$OSTYPE" == "linux*" ]]; then
+elif [[ "$OSTYPE" == "linux"* ]]; then
   mv ~/.gitconfig ~/.gitconfig.tmp
   info "Installing Linuxbrew"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
