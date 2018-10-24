@@ -68,10 +68,6 @@ fi
 [[ -f $HOME/.tmux.conf ]] && mv $HOME/.tmux.conf $HOME/.dotfiles-backup
 success "Backup done: $HOME/.dotfiles-backup"
 
-info "Installing Homebrew"
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-success "Homebrew installed."
-
 info "Copying new dotfiles"
 for file in .vimrc .zshrc .gitconfig .tmux.conf; do
   ln -s $DOTFILES_ROOT/config/$file $HOME
@@ -84,6 +80,19 @@ success ".ssh/config linked"
 
 touch ~/.exportsrc
 success "exports file created"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  info "Installing Homebrew"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  success "Homebrew installed."
+elif [[ "$OSTYPE" == "linux*" ]]; then
+  info "Installing Linuxbrew"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+
+  test -d ~/.linuxbrew && PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+  test -d /home/linuxbrew/.linuxbrew && PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+  echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >> ~/.exportsrc
+fi
 
 info "Install brew packages"
 brew install antigen httpie hub vim exa bat fzf nvm yarn fd jq tig tmux
