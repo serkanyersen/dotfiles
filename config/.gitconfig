@@ -4,7 +4,7 @@
  	signingkey = 51D7C443BB168EDC
 
 [github]
-    user = serkanyersen
+  user = serkanyersen
 
 [color]
     ui = auto
@@ -36,12 +36,14 @@
 
 [push]
     default = tracking
+    followTags = true
 
 [commit]
     verbose = true
     # gpgsign = true
 
 [fetch]
+    tags = true
     prune = true
 
 [rerere]
@@ -50,19 +52,20 @@
 [alias]
     st = status
     ci = commit
-    br = branch
+    br = branch -u
     co = checkout
     df = diff HEAD
     lg = log -p
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     # unstage = reset --hard HEAD
     unstage = !sh -c 'git reset --hard HEAD && git clean -fd'
-    put = push origin HEAD
+    put = push -u origin HEAD
     undo = reset --soft HEAD^
     rpo = remote prune origin
     cob = !sh -c 'git co -b "$0"'
     cor = !sh -c 'git co -t "$0"'
     update = !sh -c 'git stash && git pull && git stash pop'
+    yarrak = commit -m
 
 [core]
 	editor = vim
@@ -88,7 +91,6 @@
 
 [difftool "Kaleidoscope"]
     cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-
 
 [mergetool "Kaleidoscope"]
     cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" \"$REMOTE\"

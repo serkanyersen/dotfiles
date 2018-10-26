@@ -49,7 +49,7 @@ alias serkan.io="ssh -i ~/serkan.io.pem serkanio -t 'tmux attach'"
 # Basic shortcuts
 alias c="clear"
 alias vi="vim"
-alias lst="exa --tree --git-ignore"
+alias lst="exa --tree --git-ignore -I node_modules"
 alias ls="exa -la --git"
 alias reload="source ~/.zshrc"
 alias edit="$EDITOR ~/.zshrc"
@@ -59,9 +59,8 @@ alias preview="fzf --preview 'bat --color \"always\" {}'"
 # add support for ctrl+o to open selected file in VS Code
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --git-ignore'
-# tools
-function weather() { curl "http://wttr.in/$1?m";}
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+function weather() { curl "http://wttr.in/$1?m";}
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '~/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '~/Downloads/google-cloud-sdk/path.zsh.inc'; fi

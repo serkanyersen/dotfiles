@@ -3,35 +3,11 @@ Host *
     ControlPath ~/.ssh/master-%r@%h:%p
     Compression yes
 
-Host addv3
-    HostName 10.209.76.193
-    User serkan
-
-Host addv4
-    HostName 10.209.73.10
-    User serkan
-
-Host addv5
-    HostName 10.210.192.27
-    User serkan
-
-Host addv6
-    HostName 10.177.8.159
-    User serkan
-
-Host addv7
-    HostName 10.209.130.137
-    User serkan
-
-Host osmc
-    HostName 10.0.0.165
-    User osmc
-
 Host serkanio
     HostName 54.214.239.76
     User ubuntu
     IdentityFile /Users/serkan/.ssh/serkan.io.pem
 
 Host serkan-io
-    Hostname 104.131.181.62 
+    Hostname 104.131.181.62
     User serkan
