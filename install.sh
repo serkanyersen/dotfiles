@@ -90,11 +90,15 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
   info "Installing Linuxbrew"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
+
   test -d ~/.linuxbrew && PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
   test -d /home/linuxbrew/.linuxbrew && PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
   test -r ~/.bash_profile && echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.bash_profile
   echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.profile
   echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >> ~/.exportsrc
+
+  sudo apt-get install build-essential -y
+  brew install gcc -y
   # sudo echo "LC_ALL=en_US.UTF-8" >> /etc/environment
   # sudo echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
   # sudo echo "LANG=en_US.UTF-8" > /etc/locale.conf
