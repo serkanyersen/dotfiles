@@ -1,13 +1,15 @@
 Host *
     ControlMaster auto
-    ControlPath ~/.ssh/master-%r@%h:%p
+    # ControlPath ~/.ssh/master-%r@%h:%p
     Compression yes
+    ServerAliveCountMax 3
+    ServerAliveInterval 10
 
 Host serkanio
     HostName 54.214.239.76
     User ubuntu
-    IdentityFile /Users/serkan/.ssh/serkan.io.pem
+    IdentityFile /Users/serkanyersen/.ssh/serkan.io.pem
 
-Host serkan-io
-    Hostname 104.131.181.62
-    User serkan
+Host serkandev
+    HostName 68.183.167.150
+    User root

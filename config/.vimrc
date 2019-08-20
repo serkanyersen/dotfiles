@@ -23,6 +23,9 @@ Plugin 'posva/vim-vue'                      " support for VUE files
 Plugin 'altercation/vim-colors-solarized'   " Color scheme for solarized
 Plugin 'editorconfig/editorconfig-vim'      " Editorconfig support
 Plugin 'mattn/emmet-vim'                    " Expand HTML syntax using CSS (<ctrl-y>,)
+Plugin 'w0rp/ale'                           " Language Server Integration for Linters and Auto Formatters
+Plugin 'neoclide/coc.nvim'                  " Coc is an intellisense engine for vim8 & neovim.
+
 call vundle#end()
 
 " Automatically install bundles on first run
@@ -222,3 +225,9 @@ let g:airline_theme = 'powerlineish'
 " Makes exiting insert mode faster
 set ttimeoutlen=10
 
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\}
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1

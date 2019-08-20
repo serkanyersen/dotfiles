@@ -50,7 +50,7 @@ alias serkan.io="ssh -i ~/serkan.io.pem serkanio -t 'tmux attach'"
 alias c="clear"
 alias vi="vim"
 alias lst="exa --tree --git-ignore -I node_modules"
-alias ls="exa -la --git"
+alias ls="exa -laFh --git"
 alias reload="source ~/.zshrc"
 alias edit="$EDITOR ~/.zshrc"
 alias dc="docker-compose"
@@ -75,4 +75,4 @@ export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh" --no-use
 fi
 
-export PATH="$PATH:`yarn global bin`"
+export PATH="$PATH:`yarn global bin`:`npm -g bin`"
