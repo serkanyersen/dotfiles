@@ -1,4 +1,4 @@
-source /usr/local/share/antigen/antigen.zsh
+source `brew --prefix`/share/antigen/antigen.zsh
 source ~/.exportsrc
 
 # Load the oh-my-zsh's library.
@@ -70,9 +70,9 @@ if [ -f '~/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '~/Down
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [ -f '/usr/local/opt/nvm/nvm.sh' ]; then
+if [ -f '$(brew --prefix)/opt/nvm/nvm.sh' ]; then
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh" --no-use
+. "$(brew --prefix)/opt/nvm/nvm.sh" --no-use
 fi
 
 export PATH="$PATH:`yarn global bin`:`npm -g bin`"

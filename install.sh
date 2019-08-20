@@ -152,6 +152,9 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 
   sudo apt-get install build-essential -y
   brew install gcc -y
+
+  # antigen source script should be correct location
+
   # sudo echo "LC_ALL=en_US.UTF-8" >> /etc/environment
   # sudo echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
   # sudo echo "LANG=en_US.UTF-8" > /etc/locale.conf
