@@ -24,7 +24,7 @@ Plugin 'altercation/vim-colors-solarized'   " Color scheme for solarized
 Plugin 'editorconfig/editorconfig-vim'      " Editorconfig support
 Plugin 'mattn/emmet-vim'                    " Expand HTML syntax using CSS (<ctrl-y>,)
 Plugin 'w0rp/ale'                           " Language Server Integration for Linters and Auto Formatters
-Plugin 'neoclide/coc.nvim'                  " Coc is an intellisense engine for vim8 & neovim.
+" Plugin 'neoclide/coc.nvim'                  " Coc is an intellisense engine for vim8 & neovim.
 
 call vundle#end()
 
@@ -211,7 +211,7 @@ let g:syntastic_mode_map = { 'mode': 'active',
 
 " Enable ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|build|npm-cache|pip-cache)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](submodules|offline-mirror|node_modules|target|dist|build|npm-cache|pip-cache)|(\.(swp|ico|git|svn))$'
 
 " Airline customizations
 let g:airline_powerline_fonts = 1

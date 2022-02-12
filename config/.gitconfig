@@ -1,7 +1,7 @@
 [user]
-	name = Serkan Yersen
-	email = serkanyersen@gmail.com
- 	signingkey = 51D7C443BB168EDC
+    name = Serkan Yersen
+    email = serkanyersen@gmail.com
+    signingkey = 51D7C443BB168EDC
 
 [github]
   user = serkanyersen
@@ -15,43 +15,39 @@
     remote = green
 
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
+   meta = yellow bold
+   frag = magenta bold
+   old = red bold
+   new = green bold
 
 [color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
+   added = yellow
+   changed = green
+   untracked = cyan
 
 [branch]
-    autosetuprebase = always
-    autosetupmerge = true
-
-[branch "master"]
-    remote = origin
-    merge = refs/heads/master
-    mergeoptions = --no-ff
+   autosetuprebase = always
+   autosetupmerge = true
 
 [push]
-    default = tracking
-    followTags = true
+   default = tracking
+   followTags = true
 
 [commit]
-    verbose = true
-    # gpgsign = true
+   verbose = true
+   # gpgsign = true
 
 [fetch]
-    tags = true
-    prune = true
+   tags = true
+   prune = true
 
 [rerere]
-    enabled = true
+   enabled = true
 
 [alias]
     st = status
     ci = commit
+    su = submodule update --recursive
     br = branch -u
     co = checkout
     df = diff HEAD
@@ -65,7 +61,8 @@
     cob = !sh -c 'git co -b "$0"'
     cor = !sh -c 'git co -t "$0"'
     update = !sh -c 'git stash && git pull && git stash pop'
-    yarrak = commit -m
+    sl = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all --since='90 days ago'
+    id = rev-parse HEAD
 
 [core]
 	editor = vim
@@ -95,4 +92,18 @@
 [mergetool "Kaleidoscope"]
     cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" \"$REMOTE\"
 
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
 
+[delta]
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = Monokai Extended
+    navigate = true
+    side-by-side = true
+
+[interactive]
+    diffFilter = delta --color-only
